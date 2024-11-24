@@ -2,7 +2,7 @@ spring:
   application:
     name: ClassDesign
   datasource:
-    url: jdbc:postgresql://192.168.60.133:5432/Test
+    url: jdbc:postgresql://192.168.60.133:7654/Test
     username: xlevon
     password: xlevon@123
     driver-class-name: org.postgresql.Driver

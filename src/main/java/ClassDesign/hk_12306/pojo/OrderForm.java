@@ -18,5 +18,5 @@ public class OrderForm {
     // 对应数据库中的布尔类型字段，使用Java的Boolean类型
     private Boolean ticketChange;
     private Boolean isRefund;
-    private Integer fee;
+    private Double fee;
 }

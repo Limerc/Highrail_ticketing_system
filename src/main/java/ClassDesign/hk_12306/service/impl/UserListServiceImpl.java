@@ -4,8 +4,11 @@ import ClassDesign.hk_12306.mapper.UserListMapper;
 import ClassDesign.hk_12306.pojo.UserList;
 import ClassDesign.hk_12306.service.UserListService;
 import ClassDesign.hk_12306.utils.Md5Util;
+import ClassDesign.hk_12306.utils.ThreadLocalUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
 
 @Service
 public class UserListServiceImpl implements UserListService {
@@ -23,5 +26,23 @@ public class UserListServiceImpl implements UserListService {
         String md5Password = Md5Util.getMD5String(password);
         userListMapper.add(username, md5Password, phone, ID_number,false);
 
+    }
+
+    @Override
+    public UserList findByIDNumber(String ID_number) {
+        UserList user = userListMapper.findByIDNumber(ID_number);
+        return user;
+    }
+
+    @Override
+    public void update(UserList user) {
+        userListMapper.update(user);
+    }
+
+    @Override
+    public void updatePwd(String new_pwd) {
+        Map<String, Object> map = ThreadLocalUtil.get();
+        Integer id = (Integer) map.get("u_id");
+        userListMapper.updatePwd(Md5Util.getMD5String(new_pwd),id);
     }
 }
