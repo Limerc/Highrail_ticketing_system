@@ -8,14 +8,15 @@ openGauss 2.1.0
 ### 1. 数据库配置  
 1. 先执行：建表.sql
 2. 再执行：车次区间触发器.sql
-3. 利用Navicat的执行.sql文件导入数据;也可以用csv表单导入
-![Navicat执行SQL文件]()
-![选择sql文件]()
+3. 利用Navicat的执行.sql文件导入数据;也可以用csv表单导入  
+![Navicat执行SQL文件](static/Navicat执行sql文件.png)
+![选择sql文件](static/选择sql文件.png)  
 5. 再执行“其他触发器”文件夹中的.sql文件创建需要的触发器和函数
 
 ### 2. 目录结构描述
 ```
-├── Readme.md                   // help文档  
+├── Readme.md                   // help文档
+├── static                      // 图片素材  
 ├── src  
 │   ├── main  
 │   |    ├── java               // 主要功能代码  
@@ -45,11 +46,11 @@ openGauss 2.1.0
 ### 3. SpringBoot项目配置与启动
 记得确保数据库正常运行
 1. 用IDEA打开项目
-2. 在src/main/resource/application.yaml文件下配置自己的环境
-![Spring环境配置]()
-3. 打开ClassDesginApplication，右键main方法旁边的小箭头，点击启动
-![启动项目]()
-4. 端口出现后就可以在浏览器访问啦（或者用Postman之类的测试工具测试端口也行）
-![出现端口]()
-![请求登录]()
-![参数响应]()
+2. 在src/main/resource/application.yaml文件下配置自己的环境  
+![Spring环境配置](static/数据库配置.png)  
+3. 打开ClassDesginApplication，右键main方法旁边的小箭头，点击启动  
+![启动项目](static/启动项目.png)  
+4. 端口出现后就可以在浏览器访问啦（或者用Postman之类的测试工具测试端口也行）  
+![出现端口](static/出现端口.png)  
+![请求登录](static/Postman登录请求.png)  
+![参数响应](static/参数响应.png)
