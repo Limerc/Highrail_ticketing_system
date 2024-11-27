@@ -1,4 +1,11 @@
+server:
+  address: 0.0.0.0
 spring:
+  mvc:
+    static-path-pattern: /web/**
+  web:
+    resources:
+      static-locations: classpath:/static
   application:
     name: ClassDesign
   datasource:

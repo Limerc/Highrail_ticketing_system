@@ -19,11 +19,7 @@ public class TicketController {
     @Autowired
     private TicketService ticketService;
     @GetMapping
-    public Result<List<OrderForm>> getTickets(@RequestBody Map<String,Object> map){
-//        Map<String, Object> map = JwtUtil.parseToken(token);
-//        Integer u_id = (Integer) map.get("u_id");
-        System.out.println("u_id: " + map.get("u_id"));
-        Integer u_id = (Integer) map.get("u_id");
+    public Result<List<OrderForm>> getTickets(@RequestParam Integer u_id){
         List<OrderForm> orderForms = ticketService.getTickets(u_id);
         return Result.success(orderForms);
     }

@@ -10,9 +10,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer {
     @Autowired
     private LoginInterceptor loginInterceptor;
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         //registry注册拦截器，会拦截所有请求；后面放行登录和注册的请求
-        registry.addInterceptor(loginInterceptor).excludePathPatterns("/user/loginByPhone","/user/loginByID","/user/register");
+        registry.addInterceptor(loginInterceptor).excludePathPatterns("/user/loginByPhone", "/user/loginByID", "/user/register", "/web/**");
     }
 }

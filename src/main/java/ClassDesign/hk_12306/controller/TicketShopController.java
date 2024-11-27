@@ -21,24 +21,26 @@ import java.util.Map;
 public class TicketShopController {
     @Autowired
     private TicketShopService ticketShopService;
+
     @GetMapping
-    public Result<List<Map<String, Object>>> getTickets(@RequestBody Map<String,String> params){
+    public Result<List<Map<String, Object>>> getTickets(@RequestParam("start_date") String dateStr, @RequestParam String begin_station_name
+            , @RequestParam String arrive_station_name
+    ) {
         // 直达查票
-        String dateStr = params.get("start_date");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date start_date = sdf.parse(dateStr);
-            List<Map<String, Object>> ticketlist = ticketShopService.getTicketList(params.get("begin_station_name"),
-                    params.get("arrive_station_name"),start_date);
+            List<Map<String, Object>> ticketlist = ticketShopService.getTicketList(begin_station_name,
+                    arrive_station_name, start_date);
             return Result.success(ticketlist);
-        }catch (Exception e){
+        } catch (Exception e) {
             return Result.error("日期格式错误");
         }
     }
 
 
     @PostMapping
-    public Result purchaseTicket(@RequestHeader(name = "Authorization") String token, @RequestBody @Validated Ticket ticket){
+    public Result purchaseTicket(@RequestHeader(name = "Authorization") String token, @RequestBody @Validated Ticket ticket) {
         // 直达购票
         Map<String, Object> map = JwtUtil.parseToken(token);
         Integer u_id = (Integer) map.get("u_id");
